@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+case "$1" in
+get_locator_data)
+	echo "FO" > sio_simm_i
+	;;
+*)
+	;;
+esac
