@@ -14,6 +14,7 @@
 #include "accel.h"
 //#include "math.h"
 #include "comTypes.h"
+#include "myinc.h"
 
 #define REGSTATUS		(0x00)	//address of status register
 #define DATARDY         (0x03)  //status new data available
@@ -181,7 +182,8 @@ int16_t accel_get_af()
 
 	//zxp
 	// to get acceleration forward from the simm queue
-	curX = accForwardQueue.pop()
+	curX = velXReadFromEmitter();
+	printf("velx read:%d\n", curX);
 
 
 	if (curX>NOISE_FLOOR || curX<(-NOISE_FLOOR)) // within noise range?

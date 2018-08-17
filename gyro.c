@@ -13,6 +13,7 @@
 ************************************************************************************/
 #include "gyro.h"
 #include "comTypes.h"
+#include "myinc.h"
 #define REGDATA			(0x01)	//address of data register
 //defines for ctrl_reg1
 #define REGCTRL1 		(0x13)  // address of control register
@@ -132,8 +133,11 @@ uint8_t gyro_read_xyz(uint8_t * receiveBuff)
 int16_t gyro_get_turn()
 {
 	int16_t thetaZ=0;
+/*
 	uint8_t turnBuff[XYZ_BUFF_SIZE];
 	gyro_read_xyz(&turnBuff[0]);//get data
 	thetaZ = ((int16_t)((turnBuff[Z_MSB])<<Shift1_Byte)|turnBuff[Z_LSB]);
+*/
+	thetaZ = gyroThetaZReadFromEmitter();
 	return thetaZ;
 }

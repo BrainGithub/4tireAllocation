@@ -1,4 +1,5 @@
 CC=gcc
+CPP=g++
 STD=c99
 CFLAGS=-I.
 DEPS = *.h
@@ -6,17 +7,20 @@ DEPS = *.h
 LIBS = -lpthread -lm 
 OBJ = main.o \
 	accel.o gyro.o locator.o trajectory_segment.o \
-	serialIO.o simm_emitter_task.o \
-	rtos_main_task.o
+	rtos_main_task.o serialIO.o \
+	simm_emitter_task.o 
 
 TAR = tireAllocate
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) -std=$(STD)
 
+%.o: %.cpp $(DEPS)
+	g++ -c -o $@ $< $(CFLAGS)
+
 $(TAR): $(OBJ)
 	mkdir ./obj
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+	$(CPP) -o $@ $^ $(CFLAGS) $(LIBS)
 	mv $(TAR) $(OBJ) ./obj/
 
 .PHONY: clean

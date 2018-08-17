@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <pthread.h>
+#include "simm_emitter_task.h"
 
 #define RAISE_EXP_unimpl printf("zxp not impl error:%s,%s\n", __FILE__, __func__)
     
